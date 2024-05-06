@@ -37,9 +37,12 @@ class ClientController extends Controller
         ];
     
         $rules = [
-            'clientName'     =>'required | string',
+            'clientName'     =>'required | string | without_spaces | unique:clients,clientName',
+
             'phone'     =>'required|numeric|digits:11',
             'email'    => 'required|email |unique:clients,email',
+
+            
             'password' => [
                 'required',
                 'string',
